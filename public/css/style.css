@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+--font: 'VT323', monospace;
+--black: rgb(0, 0, 0,);
+}
+
+
+#gameCanvas {
+    background: black;
+    display: none;
+    margin: 0 auto;
+}
+#menu-layout {
+    font-family: var(--font);
+    background: black;
+    color: white;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    column-gap: 20%;
+    justify-content: center;
+    display: flex;
+}
+#timer {
+    color: yellow;
+}
+#modalStyle {
+   font-family: var(--font);
+   background: gray;
+   color: white;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:-20px;
+}
+.modal-title {
+    color: black;
+}
+
+.buttonplaygame {
+    display: flex;
+    gap: 2rem;
+}
+#playButton {
+    background: black;
+    color: white;
+    height: 200px;
+    font-size: 100px;
+    border: 10px solid white;
+
+}
+.buttonplaygame {
+    display: flex;
+    justify-content: center;
+}
+#leaderboardButton {
+    background: black;
+    color: white;
+    height: 200px;
+    font-size: 100px;
+    border: 10px solid white;
+}
+button:hover {
+    color: gray;
+}
+h1 {
+    font-size: 100px;
+}
+.text2 {
+    display: flex;
+}
+#modalText {
+    color: black;
+}
+#leaderboard {
+    font-family: var(--font);
+    color: white;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+#goBackButton {
+    background: black;
+    color: white;
+    height: 75px;
+    font-size: 50px;
+    border: 5px solid white;
+    margin: 10px;
+}
