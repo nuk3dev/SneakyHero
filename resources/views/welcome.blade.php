@@ -4,6 +4,7 @@
         <!--if had more time, would've downloaded the cdns and made html template-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -34,13 +35,11 @@
             <thead>
             <th id='username' data-sortable="true" data-field="username"><h2>Username</h2></th>
             <th id='secondsplayed' data-sortable="true" data-field="highestScore"><h2>Highscore</h2></th>
-                <?php
-            // foreach($data['username'] as $highscore) {
-                ?>
+                @foreach($players as $key)
             <tr>
-                    <th scope="col" title="<?php // echo $highscore['username']; ?>"><?php /// echo $highscore['username']; ?></th>
-                    <th scope="col"  data-field="secondsplayed" title="<?php // $highscore['highestScore']; ?>"><?php // echo $highscore['highestScore']; ?></th>
-                </tr> <?php// } ?>
+                    <th scope="col" title="<?php echo $key->name ?>"><?php echo $key->name ?></th>
+                    <th scope="col"  data-field="secondsplayed" title="<?php echo $key->highestscore ?>"><?php echo $key->highestscore ?></th>
+                @endforeach
             </thead>
             <tbody class="sortable">
             </tbody>
@@ -58,8 +57,8 @@
                     <div class="modal-body">
                         <p id="modalText">First you need to put your username in, so your username can be put on the leaderboard.</p>
                             <div class="form-group">
-                            <form  id="formInput" action="" method="POST">
-                                @csrf
+                            <form  id="formInput" action="{{   url('/')  }}" method="POST">
+                           @csrf
                                 <input type="text" class="form-control" placeholder="username" id="username" name="username">
                             </div>
                             <button type="button"  name="submit" data-dismiss="modal" id="submit" value="submit" class="btn btn-primary">Submit</button>
@@ -69,11 +68,24 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/script.js') }}"></script>
+   
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.2/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+
+   
+
+<script src="{{ asset('js/script.js') }}"></script>
+
+<script>
+        $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+    </script>
     </body>
 </html>
