@@ -318,29 +318,24 @@ leaderboard.style.display = 'none';
              */
             function sendScore(secondsPlayed) {
                 $.ajax({
-                    url: "/api",
+                    url: "/",
                     method: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: {
                         'username': $("#username").val(),
                         'secondsplayed': secondsPlayed,
                     },
-                    success: function(result){
-                        console.log("success", result);
-                        let data = JSON.parse(result);
-                        if(data.success == true) {
-                            console.log($("#username").val(), secondsPlayed);
-                           $alert =  alert(data.message);
-
-                           layout.style.display = 'block';
-                           canvas.style.display = "none";
-                           timer.style.display = "none";
+                    success: function(data) {
+                        console.log("success", data);
+                        if (data.success) {
+                            
+                            layout.style.display = 'block';
+                            canvas.style.display = "none";
+                            timer.style.display = "none";
                         }
-
-                    },
-                    error: function() {
-                        console.log("error");
                     }
                 });
             }
+            
         }
 
