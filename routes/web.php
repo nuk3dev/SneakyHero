@@ -21,7 +21,7 @@ Route::post('/', [IndexController::class, 'InsertAjaxData']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/dashboard/edit/{id}', [DashboardController::class, 'editPlayerById'])->where('id', '[0-9]+');
 Route::get('/dashboard/delete/{id}', [DashboardController::class, 'deletePlayerById'])->where('id', '[0-9]+');
-Route::post('createPlayer', [DashboardController::class, 'insertPlayer']);
+Route::post('/dashboard/createPlayer', [DashboardController::class, 'insertPlayer']);
 Route::post('/dashboard/edit/{id}', [DashboardController::class, 'inserteditedplayer'])->where('id', '[0-9]+');
 Route::post('/dashboard/editPlayer/{id}', [DashboardController::class, 'inserteditedplayer'])->where('id', '[0-9]+');
 
