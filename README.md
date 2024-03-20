@@ -1,11 +1,8 @@
-Quickly made a setup in Laravel so you get an idea what the game would've been.
+Fully works with MYSQL
+use the template.sql and make a database, change the name in the .env file.
 
-To run use:
+navigating:
 
-php artisan serve
-
-script.js has all game functions.
-
-When I made the game it had also had used sql in their framework
-It was dynamic in that way in you could see the 5 players with the best time, 
-but can't use that in this code.
+/dashboard to manage all players score, make new player with form edit score and
+delete players from the database, then it won't show in the DB anymore.
+/ root route of the game.
