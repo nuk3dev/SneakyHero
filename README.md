@@ -1,4 +1,5 @@
 Fully works with MYSQL
+RUN composer install, otherwise it won't php artisan serve
 use the template.sql and make a database, change the name in the .env file.
 
 navigating:
