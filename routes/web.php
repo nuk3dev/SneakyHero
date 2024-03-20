@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index']);
+Route::post('/', [IndexController::class, 'InsertAjaxData']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/dashboard/edit/{id}', [DashboardController::class, 'editPlayerById'])->where('id', '[0-9]+');
+Route::get('/dashboard/delete/{id}', [DashboardController::class, 'deletePlayerById'])->where('id', '[0-9]+');
+Route::post('createPlayer', [DashboardController::class, 'insertPlayer']);
+Route::post('/dashboard/edit/{id}', [DashboardController::class, 'inserteditedplayer'])->where('id', '[0-9]+');
+Route::post('/dashboard/editPlayer/{id}', [DashboardController::class, 'inserteditedplayer'])->where('id', '[0-9]+');
 
-Route::post('/api', [IndexController::class, 'index']);
+
+
